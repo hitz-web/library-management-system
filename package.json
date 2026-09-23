@@ -1,0 +1,20 @@
+{
+  "name": "library-management-system",
+  "version": "1.0.0",
+  "description": "Library Management System — Add Book module with Node.js, Express, and MySQL",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:init": "mkdir -p data/mysql && mysqld --initialize-insecure --datadir=./data/mysql",
+    "db:start": "mysqld --datadir=./data/mysql --port=3308 --socket=./data/mysql.sock --pid-file=./data/mysql.pid --mysqlx=0 --bind-address=127.0.0.1"
+  },
+  "keywords": ["library", "express", "mysql"],
+  "author": "Hitesh Sonawane",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.14.0"
+  }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collection · Library Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">LM</span>
+          <div>
+            <p class="brand-kicker">Staff portal</p>
+            <h1>LibraDesk</h1>
+          </div>
+        </div>
+        <nav>
+          <a class="nav-link" href="/">Add Book</a>
+          <a class="nav-link is-active" href="/books.html">Collection</a>
+        </nav>
+        <p class="sidebar-note">
+          Search, update, and remove records — the foundation for day-to-day catalog work.
+        </p>
+      </aside>
+
+      <main class="content">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Library collection</p>
+            <h2>Stored book records</h2>
+            <p class="lede">
+              Every title saved from the Add Book form lives here in MySQL. Search by ID, title,
+              author, or category.
+            </p>
+          </div>
+        </header>
+
+        <section class="card toolbar">
+          <label class="search-field">
+            Search collection
+            <input id="search" type="search" placeholder="BK-1042, author, title…" />
+          </label>
+          <p id="count" class="count"></p>
+        </section>
+
+        <div id="list-alert" class="alert" hidden></div>
+
+        <section class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="books-body">
+              <tr>
+                <td colspan="8" class="empty">Loading collection…</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="edit-dialog">
+      <form id="edit-form" method="dialog" novalidate>
+        <h3>Update book</h3>
+        <input type="hidden" id="edit-bookId" />
+        <label>
+          Title
+          <input id="edit-title" required maxlength="150" />
+        </label>
+        <label>
+          Author
+          <input id="edit-author" required maxlength="100" />
+        </label>
+        <label>
+          Category
+          <select id="edit-category" required>
+            <option>Fiction</option>
+            <option>Non-Fiction</option>
+            <option>Science</option>
+            <option>Technology</option>
+            <option>History</option>
+            <option>Biography</option>
+            <option>Children</option>
+            <option>Reference</option>
+            <option>Magazines</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <div class="grid two">
+          <label>
+            Quantity
+            <input id="edit-quantity" type="number" min="0" step="1" required />
+          </label>
+          <label>
+            Price (₹)
+            <input id="edit-price" type="number" min="0" step="0.01" required />
+          </label>
+        </div>
+        <label>
+          Availability
+          <select id="edit-availability" required>
+            <option>Available</option>
+            <option>Issued</option>
+            <option>Unavailable</option>
+          </select>
+        </label>
+        <div id="edit-alert" class="alert" hidden></div>
+        <div class="actions">
+          <button value="cancel" class="btn ghost">Cancel</button>
+          <button id="save-edit" value="default" class="btn primary">Save changes</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="/js/books.js"></script>
+  </body>
+</html>

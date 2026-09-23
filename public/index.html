@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Book · Library Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">LM</span>
+          <div>
+            <p class="brand-kicker">Staff portal</p>
+            <h1>LibraDesk</h1>
+          </div>
+        </div>
+        <nav>
+          <a class="nav-link is-active" href="/">Add Book</a>
+          <a class="nav-link" href="/books.html">Collection</a>
+        </nav>
+        <p class="sidebar-note">
+          Digitize new titles, validate entries, and keep Book IDs unique.
+        </p>
+      </aside>
+
+      <main class="content">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Add Book module</p>
+            <h2>Register a new title</h2>
+            <p class="lede">
+              Enter catalog details. Required fields are checked on the form and again on the server
+              before the record is stored in MySQL.
+            </p>
+          </div>
+        </header>
+
+        <section class="card">
+          <form id="add-book-form" novalidate>
+            <div class="grid">
+              <label>
+                Book ID
+                <input
+                  id="bookId"
+                  name="bookId"
+                  type="text"
+                  maxlength="20"
+                  placeholder="e.g. BK-1042"
+                  autocomplete="off"
+                  required
+                />
+                <span class="hint">Unique identifier · letters, numbers, hyphens</span>
+              </label>
+              <label>
+                Title
+                <input id="title" name="title" type="text" maxlength="150" required />
+              </label>
+              <label>
+                Author
+                <input id="author" name="author" type="text" maxlength="100" required />
+              </label>
+              <label>
+                Category
+                <select id="category" name="category" required>
+                  <option value="">Select category</option>
+                  <option>Fiction</option>
+                  <option>Non-Fiction</option>
+                  <option>Science</option>
+                  <option>Technology</option>
+                  <option>History</option>
+                  <option>Biography</option>
+                  <option>Children</option>
+                  <option>Reference</option>
+                  <option>Magazines</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label>
+                Quantity
+                <input id="quantity" name="quantity" type="number" min="0" step="1" value="1" required />
+              </label>
+              <label>
+                Price (₹)
+                <input id="price" name="price" type="number" min="0" step="0.01" value="0" required />
+              </label>
+              <label>
+                Availability status
+                <select id="availability" name="availability" required>
+                  <option value="Available">Available</option>
+                  <option value="Issued">Issued</option>
+                  <option value="Unavailable">Unavailable</option>
+                </select>
+              </label>
+            </div>
+
+            <div id="form-alert" class="alert" hidden></div>
+
+            <div class="actions">
+              <button type="submit" class="btn primary">Save book</button>
+              <button type="reset" class="btn ghost">Clear form</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="/js/add-book.js"></script>
+  </body>
+</html>
