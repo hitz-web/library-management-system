@@ -158,13 +158,13 @@ app.use((_req, res) => {
 async function start() {
   try {
     await ensureSchema(pool);
-    app.listen(PORT, () => {
-      console.log(`Library Management System running at http://localhost:${PORT}`);
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Library Management System running on port ${PORT}`);
     });
   } catch (error) {
     console.error("Failed to connect to MySQL.");
     console.error(error.message);
-    console.error("Copy .env.example to .env and set DB_PASSWORD to your MySQL root password.");
+    console.error("Set MYSQL_URL or copy .env.example to .env for local MySQL.");
     process.exit(1);
   }
 }

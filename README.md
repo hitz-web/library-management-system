@@ -49,6 +49,23 @@ npm start
 
 If the credentials in `.env` are valid, the server creates `library_db` and the `books` table on startup. You can also run `mysql -u root -p < schema.sql`. Docker is available as `docker compose up -d` (MySQL on host port 3307).
 
+## Deploy (always on)
+
+This app needs a Node host **and** a MySQL database. Railway can run both.
+
+1. Push the project to GitHub.
+2. Open [Railway](https://railway.com/new), sign in with GitHub, and deploy this repo.
+3. In the same project click **New → Database → MySQL**.
+4. On the web service, add a variable:
+
+   `MYSQL_URL` = `${{MySQL.MYSQL_URL}}`
+
+5. Open the web service **Settings → Networking → Generate domain**.
+
+Anyone can then use `https://your-app.up.railway.app` from any device. The Mac does not need to stay on.
+
+The site has no login, so anyone with the URL can add or delete books.
+
 ## API
 
 - `POST /api/books` — add a book

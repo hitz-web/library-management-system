@@ -12,6 +12,9 @@
   "keywords": ["library", "express", "mysql"],
   "author": "Hitesh Sonawane",
   "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
